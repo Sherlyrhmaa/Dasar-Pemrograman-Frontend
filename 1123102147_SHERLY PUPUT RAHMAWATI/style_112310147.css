@@ -1,0 +1,82 @@
+/* CSS untuk styling form */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color:   
+ #f9f9f9;
+    margin: 0;
+}
+
+.container {
+    width: 600px;
+    padding: 20px;
+    border: 1px solid #657242;
+    border-radius: 50px;
+    background-color: #def79c;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+td.label {
+    font-size: 14px;
+    color: black;
+    display: flex;
+    align-items: center;
+    width: 200px; /* Lebar tetap untuk label */
+}
+
+.symbol {
+    color: black;
+    margin-right: 5px;
+}
+
+td:nth-child(2) {
+    width: 10px;
+    text-align: center;
+}
+
+.currency {
+    white-space: nowrap;
+    margin-right: 5px;
+}
+
+td {
+    padding: 5px 10px;
+    vertical-align: top;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #657242;
+    border-radius: 1px;
+    outline: none;
+}
+
+.input-long {
+    width: 100%; /* Lebar penuh untuk input panjang */
+}
+
+.input-short {
+    width: 50%; /* Lebar setengah untuk input pendek */
+}
