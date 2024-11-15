@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pembelian Buah</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-left: 150px; 
+        }
+        h2 {
+            color: #333;
+        }
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin: 20px 0; 
+            gap: 15px;
+        }
+        input[type="text"] {
+            width: 23%; 
+            padding: 8px;
+            border: 2px solid #28a745; 
+            font-style: italic; 
+            font-size: 16px; 
+            color: black; 
+        }
+        input[type="text"]::placeholder {
+            font-style: italic; 
+            color: black; 
+            font-size: 16px; 
+        }
+        input[type="text"]:focus {
+            font-style: normal; 
+        }
+        button {
+            padding: 11px 40px;
+            background-color: #3178c4; 
+            color: #fff;
+            border: 1px solid #000; 
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .data-pembelian {
+            font-weight: bold; 
+            margin-top: 45px;
+            margin-bottom: 15px;
+        }
+        .data-item {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .data-item span {
+            font-weight: normal; /* Normal untuk kalimat Nama Buah, Harga / Kg, Diskon */
+            margin-left: 10px; /* Memberi jarak antara label dan value */
+        }
+        .data-item label {
+            width: 150px; /* Menetapkan lebar yang konsisten untuk label */
+            display: inline-block; /* Membuat label menjadi elemen blok di sebelah kiri */
+        }
+        table {
+            width: 45%; /* Lebar tabel disesuaikan */
+            margin-top: 40px; /* Meletakkan tabel lebih ke bawah */
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 4px;
+        }
+        th {
+            background-color: #cccbcb; /* Warna latar belakang kolom header */
+            font-weight: bold;
+        }
+        td {
+            text-align: left; /* Menjadikan isi kolom td di kiri */
+        }
+        th, td {
+            width: 35%; /* Menetapkan lebar kolom yang sama untuk semua kolom */
+        }
+    </style>
+</head>
+<body>
+    <h2>Data Pembelian Buah</h2>
+    <div class="input-container">
+        <input type="text" id="fruitInput" placeholder="Masukkan nama buah....">
+        <button onclick="getFruitData()">Beli</button>
+    </div>
+    
+    <div class="data-pembelian">Data Pembelian :</div>
+    <div class="data-item">
+        <label for="fruitName">Nama Buah</label>
+        <td>:</td>
+        <span id="fruitName">.................</span>
+    </div>
+    <div class="data-item">
+        <label for="fruitPrice">Harga / Kg</label>
+        <td>:</td>
+        <span id="fruitPrice">.................</span>
+    </div>
+    <div class="data-item">
+        <label for="fruitDiscount">Diskon</label>
+        <td>:</td>
+        <span id="fruitDiscount">.................</span>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Buah</th>
+                <th>Harga / Kg</th>
+                <th>Diskon</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Nanas</td>
+                <td>7.500</td>
+                <td>5%</td>
+            </tr>
+            <tr>
+                <td>Anggur</td>
+                <td>35.000</td>
+                <td>15%</td>
+            </tr>
+            <tr>
+                <td>Melon</td>
+                <td>12.500</td>
+                <td>10%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function getFruitData() {
+            // Data buah yang tersedia
+            const fruitData = {
+                "nanas": { price: "7.500", discount: "5%" },
+                "anggur": { price: "35.000", discount: "15%" },
+                "melon": { price: "12.500", discount: "10%" }
+            };
+
+            // Ambil nilai input dari user dan ubah ke huruf kecil
+            const fruitInput = document.getElementById("fruitInput").value.trim().toLowerCase();
+
+            // Cek apakah nama buah ada dalam data
+            if (fruitData[fruitInput]) {
+                document.getElementById("fruitName").textContent = fruitInput.charAt(0).toUpperCase() + fruitInput.slice(1);
+                document.getElementById("fruitPrice").textContent = fruitData[fruitInput].price;
+                document.getElementById("fruitDiscount").textContent = fruitData[fruitInput].discount;
+            } else {
+                document.getElementById("fruitName").textContent = "Tidak ditemukan";
+                document.getElementById("fruitPrice").textContent = "-";
+                document.getElementById("fruitDiscount").textContent = "-";
+            }
+        }
+    </script>
+</body>
+</html>
