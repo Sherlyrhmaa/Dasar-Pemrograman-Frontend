@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deskripsi Hewan</title>
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <style>
+        .animal-container {
+            text-align: center;
+            margin: 20px;
+        }
+        .animal-container img {
+            width: 150px;
+            height: 150px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .popup-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mt-4">Deskripsi Hewan</h2>
+        <div class="row justify-content-center">
+            <!-- Singa -->
+            <div class="col-md-3 animal-container">
+                <img src="singa.jpg" alt="Singa">
+                <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#modalPopup" 
+                        data-title="Singa" 
+                        data-img="singa.jpg" 
+                        data-desc="Singa dikenal sebagai raja hutan. Mereka adalah hewan yang gagah dan memiliki suara auman yang khas.">Singa</button>
+            </div>
+            <!-- Merak -->
+            <div class="col-md-3 animal-container">
+                <img src="merak.jpg" alt="Merak">
+                <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#modalPopup" 
+                        data-title="Merak" 
+                        data-img="merak.jpg" 
+                        data-desc="Merak adalah burung yang indah dengan bulu ekor yang dapat dikembangkan menyerupai kipas. Mereka melambangkan keindahan.">Merak</button>
+            </div>
+            <!-- Gajah -->
+            <div class="col-md-3 animal-container">
+                <img src="gajah.jpg" alt="Gajah">
+                <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#modalPopup" 
+                        data-title="Gajah" 
+                        data-img="gajah.jpg" 
+                        data-desc="Gajah adalah hewan darat terbesar yang memiliki ingatan kuat dan sangat cerdas. Mereka sering hidup dalam kelompok besar.">Gajah</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalPopup" tabindex="-1" role="dialog" aria-labelledby="modalPopupTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title popup-title" id="modalPopupTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalPopupImage" src="" alt="Hewan" class="img-fluid mb-3" 
+                         style="width: 150px; height: 150px; border: 1px solid #ddd; border-radius: 8px;">
+                    <p id="modalPopupDesc"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="modal"]').on('click', function () {
+                const title = $(this).data('title');
+                const img = $(this).data('img');
+                const desc = $(this).data('desc');
+
+                $('#modalPopupTitle').text(title);
+                $('#modalPopupImage').attr('src', img);
+                $('#modalPopupDesc').text(desc);
+            });
+        });
+    </script>
+</body>
+</html>
