@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tombol dengan Penjelasan dan Desain Menarik</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h3 {
+            color: #333;
+        }
+        button, input[type="submit"], a {
+            margin: 10px;
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 1000;
+        }
+        /* Menambahkan batas dan warna untuk pemisah bagian */
+        .section {
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background-color: #fafafa;
+        }
+        .section h3 {
+            color: #007BFF;
+        }
+        /* Menambahkan warna latar belakang tombol */
+        button, input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover, input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Menambahkan gaya untuk tombol link */
+        a {
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        .explanation {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            // Tooltip untuk semua tombol
+            let tooltip = $('<div class="tooltip"></div>').appendTo('body');
+            
+            $('[data-tooltip]').hover(function(e) {
+                let text = $(this).data('tooltip');
+                tooltip.text(text).fadeIn(200);
+            }, function() {
+                tooltip.hide();
+            }).mousemove(function(e) {
+                tooltip.css({
+                    left: e.pageX + 10,
+                    top: e.pageY + 10
+                });
+            });
+            
+            // Menambahkan penjelasan untuk checkbox
+            $('#check1, #check2, #check3').change(function(){
+                let explanation = '';
+                if ($('#check1').prop('checked')) {
+                    explanation += '<div class="explanation">Menggunakan teks <strong>Bold</strong>.</div>';
+                }
+                if ($('#check2').prop('checked')) {
+                    explanation += '<div class="explanation">Menggunakan teks <em>Italic</em>.</div>';
+                }
+                if ($('#check3').prop('checked')) {
+                    explanation += '<div class="explanation">Menggunakan teks yang <u>Underlined</u>.</div>';
+                }
+                $('#checkboxExplanation').html(explanation);
+            });
+
+            // Menambahkan penjelasan untuk radio button (Pilihan)
+            $('input[name="radio"]').change(function() {
+                let explanation = '';
+                if ($('#radio1').prop('checked')) {
+                    explanation = '<div class="explanation">Pilihan 1: Anda memilih pilihan pertama.</div>';
+                } else if ($('#radio2').prop('checked')) {
+                    explanation = '<div class="explanation">Pilihan 2: Anda memilih pilihan kedua.</div>';
+                } else if ($('#radio3').prop('checked')) {
+                    explanation = '<div class="explanation">Pilihan 3: Anda memilih pilihan ketiga.</div>';
+                }
+                $('#radioExplanation').html(explanation);
+            });
+
+            // Menambahkan penjelasan untuk repeat button (No Repeat, Once, All)
+            $('input[name="repeat"]').change(function() {
+                let explanation = '';
+                if ($('#repeat0').prop('checked')) {
+                    explanation = '<div class="explanation">No Repeat: Tidak ada pengulangan.</div>';
+                } else if ($('#repeat1').prop('checked')) {
+                    explanation = '<div class="explanation">Once: Mengulang satu kali.</div>';
+                } else if ($('#repeatall').prop('checked')) {
+                    explanation = '<div class="explanation">All: Mengulang semua.</div>';
+                }
+                $('#repeatExplanation').html(explanation);
+            });
+
+            // jQuery UI Buttons
+            $('button, input[type="submit"], a').button();
+            $("#format, #radio").buttonset();
+            
+            // Toolbar button dengan ikon
+            $("#beginning").button({ icons: { primary: "ui-icon-seek-start" }, text: false });
+            $("#rewind").button({ icons: { primary: "ui-icon-seek-prev" }, text: false });
+            $("#play").button({ icons: { primary: "ui-icon-play" }, text: false });
+            $("#stop").button({ icons: { primary: "ui-icon-stop" }, text: false });
+            $("#forward").button({ icons: { primary: "ui-icon-seek-next" }, text: false });
+            $("#end").button({ icons: { primary: "ui-icon-seek-end" }, text: false });
+            $("#shuffle").button({ icons: { primary: "ui-icon-refresh" }, text: false });
+            
+            $("#repeat").buttonset();
+        });
+    </script>
+</head>
+<body>
+    <h1>Membuat Tombol dengan jQuery UI</h1>
+
+    <div class="section">
+        <h3>Default Button</h3>
+        <button data-tooltip="Ini adalah tombol biasa">Tombol</button>
+        <input type="submit" value="Tombol Submit" data-tooltip="Mengirimkan formulir">
+        <a href="#" data-tooltip="Tombol tautan">Tombol Link</a>
+    </div>
+
+    <div class="section">
+        <h3>Checkbox Button</h3>
+        <div id="format">
+            <input type="checkbox" id="check1" data-tooltip="Bold"><label for="check1">B</label>
+            <input type="checkbox" id="check2" data-tooltip="Italic"><label for="check2">I</label>
+            <input type="checkbox" id="check3" data-tooltip="Underline"><label for="check3">U</label>
+        </div>
+        <div id="checkboxExplanation"></div>
+    </div>
+
+    <div class="section">
+        <h3>Radio Button</h3>
+        <div id="radio">
+            <input type="radio" id="radio1" name="radio" data-tooltip="Pilihan 1"><label for="radio1">Choice 1</label>
+            <input type="radio" id="radio2" name="radio" checked="checked" data-tooltip="Pilihan 2"><label for="radio2">Choice 2</label>
+            <input type="radio" id="radio3" name="radio" data-tooltip="Pilihan 3"><label for="radio3">Choice 3</label>
+        </div>
+        <div id="radioExplanation"></div>
+    </div>
+
+    <div class="section">
+        <h3>Toolbar Button</h3>
+        <div id="toolbar" class="ui-widget-header ui-corner-all">
+            <button id="beginning" data-tooltip="Pergi ke awal"></button>
+            <button id="rewind" data-tooltip="Putar mundur"></button>
+            <button id="play" data-tooltip="Putar"></button>
+            <button id="stop" data-tooltip="Berhenti"></button>
+            <button id="forward" data-tooltip="Putar maju"></button>
+            <button id="end" data-tooltip="Pergi ke akhir"></button>
+            <button id="shuffle" data-tooltip="Acak urutan"></button>
+            <span id="repeat">
+                <input type="radio" id="repeat0" name="repeat" checked="checked" data-tooltip="Tidak mengulang"><label for="repeat0">No Repeat</label>
+                <input type="radio" id="repeat1" name="repeat" data-tooltip="Ulang satu kali"><label for="repeat1">Once</label>
+                <input type="radio" id="repeatall" name="repeat" data-tooltip="Ulang semua"><label for="repeatall">All</label>
+            </span>
+        </div>
+        <div id="repeatExplanation"></div>
+    </div>
+</body>
+</html>
