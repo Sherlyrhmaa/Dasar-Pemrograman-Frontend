@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Membuat Widget Dengan JQuery UI</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="jquery-ui/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery-ui/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Membuat Widget Tabs Dengan JQuery UI</h1>
+    <div id="tabs">
+        <ul>
+        <li><a href="tabs-kedua">STIKOM</a></li>
+        <li><a href="tabs-pertama">Tutorial</a></li>
+        <li><a href="tabs-ketiga">JQuery UI</a></li>
+        </ul>
+        <div>
+            <div id="tabs-pertama">
+                <p>
+                    Tutorial jquery ui : Membuat Widget Tabs Dengan jquery UI. Ini merupakan tab pertama.
+                    ditandai dengan tabs masing-masing sesuai id. widget tabs berguna untuk memberikan pengeelompokan data dan banyak lagi kegunaan lainnya.
+                </p>
+            </div>
+            <div id="tabs-kedua">
+                <p>
+                    STIKOM adalah sebuah Perguruan Tinggi di bisang informatika yang membekali mahasiswanya dengan beberapa matakuliah antara lain pemrograman dasar, 
+                    menengah, hingga lanjutan. Perpustakaan STIKOM menyediakan tutorial-tutorial berkualitas dan di harapkan dadpat membantu
+                    mahasiswa yang membaca tutorial di perpustakaan dalam mempelajari pemrograman web, mobile maupun desktop.
+                </p>
+                <ul>
+                    <li>Web Programming</li>
+                    <li>Web Design</li>
+                    <li>Mobile App Development</li>
+                </ul>
+            </div>
+            <div>
+            <div id="tabs-ketiga">
+                <p>
+                    JQuery iini merupakan library yang dikembangkan dari jquery. jquery ui di khususkan untuk bagian front-end atau bagian user interface.
+                    jquery ui menyediakan beberapa effect yang dikembangkan dari jquery dan juga beberapa widget yang sangat berguna,
+                    tinggal digunakan dengan memberikan fungsi yang telah disediakan oleh jquery ui.
+                </p>
+            </div>
+        </div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $( "#tabs" ).tabs();
+    });
+</script>
+</html>
